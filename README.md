@@ -1,7 +1,5 @@
-1. ng new vezeteknev_keresztnev_frontend --skip-tests
-2. komponensek létrehozása, illetve models mappa -> ng g c (new-bid, painting-list) - models mappa manuális (category.model.ts -    swagger)
-3. service létrehozása ng g s services/data
-4. app.config provideHtttpClient(withFetch()),
+1. komponensek létrehozása, illetve models mappa -> ng g c (new-bid, painting-list) - models mappa manuális (category.model.ts -    swagger)
+2. app.routes path-ek
 5. data-servicebe útvonalak lekérdezése -> constructor private http: HttpClient, private apiUrl
   getCategories(){
     return this.http.get<CategoryModel[]>(`${this.apiUrl}/categories`);

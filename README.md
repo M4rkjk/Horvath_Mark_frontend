@@ -1,3 +1,4 @@
+npm i
 1. Modellek létrehozás a models mappába car.model.ts -> https://transform.tools/json-to-typescript
 2. komponensek létrehozása ng g c components/car-list
 3. app.routes path-ek

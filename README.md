@@ -1,12 +1,51 @@
 1. Modellek létrehozás a models mappába car.model.ts -> https://transform.tools/json-to-typescript
-1. komponensek létrehozása, illetve models mappa -> ng g c (new-bid, painting-list) - models mappa manuális (category.model.ts -    swagger)
-2. app.routes path-ek
-5. data-servicebe útvonalak lekérdezése -> constructor private http: HttpClient, private apiUrl
-  getCategories(){
-    return this.http.get<CategoryModel[]>(`${this.apiUrl}/categories`);
+2. komponensek létrehozása ng g c components/car-list
+3. app.routes path-ek
+
+4. data-service
+
+#sima GET
+getCategories(){
+  return this.http.get<CategoryModel[]>(`${this.apiUrl}/categories`);
 }
-6. ts fájl  paintings: PaintingModel[] = [], constructor, ngOnInit függvény és további függvények elkészítése
+
+#ID alapú GET
+getCarsByManufacturer(manufacturerId: number) {
+  return this.http.get<CarModel[]>(`${this.apiUrl}/cars/${manufacturerId}`);
+}
+
+#POST
+postVote(vote: VoteModel) {
+  return this.http.post<{message: string}>(`${this.apiUrl}/vote`, vote);
+}
+
+5. TS fájl 
+
+  imports: [RouterLink],
+
+cars: CarModel[] = [];
+manufacturers: ManufacturerModel[] = [];
+
+constructor(private dataService: DataService) { }
+
+ngOnInit(): void {
+    this.dataService.getCars().subscribe({
+      next: (response) => {this.cars = response;},
+      error: (error) => { console.log(error); }
+    });
+
+    this.dataService.getManufacturers().subscribe({
+      next: (response) => {this.manufacturers = response;},
+      error: (error) => { console.log(error); }
+    });
+}
+
+export class CarListComponent implements OnInit
+
+
+{ path: 'voting/:id', component:VoteComponent }
+<a routerLink="/voting/{{c.id}}" class="btn btn-primary">Vote</a>
+
+
 7. adatok megjelenítése listában html
-8. app.component.html -> <router-outlet>, app.routes.ts -> path
-9. index.html -> bootstrap link
 

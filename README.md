@@ -1,3 +1,4 @@
+1. Modellek létrehozás a models mappába car.model.ts -> https://transform.tools/json-to-typescript
 1. komponensek létrehozása, illetve models mappa -> ng g c (new-bid, painting-list) - models mappa manuális (category.model.ts -    swagger)
 2. app.routes path-ek
 5. data-servicebe útvonalak lekérdezése -> constructor private http: HttpClient, private apiUrl
